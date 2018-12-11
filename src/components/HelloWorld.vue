@@ -6,20 +6,21 @@
                 ss
             </div>
         </div>
-        {{t}}
+        {{text}}
         <button @click='test'>test loading</button>
         <loading></loading>
     </div>
 </template>
 
 <script>
+    import { mapGetters } from "vuex";
     import loading from '@/components/common/loading/loading'
     export default {
         name: 'HelloWorld',
         data() {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                t: this.$store.state.test,
+                // t: this.test
             }
         },
         methods: {
@@ -33,7 +34,9 @@
             }
         },
         computed: {
-
+            ...mapGetters([
+                "text",
+            ]),
         },
         components: {
             loading,

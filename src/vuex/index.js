@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
-        test: 1,
+        text: 111111111111111,
 
         // 加载弹窗
         isloading: false,
@@ -25,5 +25,10 @@ export default new Vuex.Store({
             // log('全局加载当前计数 init', state.globalModalCount)
         }
     },
-    getters: {},
+    getters: {
+        text: state => {
+            console.log('getters state', state.text)
+            return state.text
+        },
+    },
 })

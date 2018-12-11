@@ -11,11 +11,12 @@ const errorTip = function(url, data, XMLHttpRequest, textStatus, errorThrown) {
     error('服务器抛出返回的错误信息: ', textStatus);
     line()
 }
-export function request_get(url, data) {
+// 不携带 jwt 版本请求
+export function request(method, url, data) {
     return $.ajax({
         url,
         data,
-        type: 'get',
+        type: method,
         beforeSend: function(XMLHttpRequest) {
             store.commit('globalModalCountAdd')
         },
@@ -30,20 +31,8 @@ export function request_get(url, data) {
     })
 }
 export function request_post(url, data) {
-    return $.ajax({
-        url,
-        data,
-        type: 'post',
-        beforeSend: function(XMLHttpRequest) {
-            store.commit('globalModalCountAdd')
-        },
-        success: function(res, status, xhr) {
-            store.commit('globalModalCountReduce')
-            return res
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            store.commit('globalModalCountReduce')
-            errorTip(url, data, XMLHttpRequest, textStatus, errorThrown)
-        },
-    })
+    return request('post', url, data)
+}
+export function request_get(url, data) {
+    return request('get', url, data)
 }
