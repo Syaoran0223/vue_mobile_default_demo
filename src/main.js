@@ -13,13 +13,19 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
+import { Spinner } from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.component(Spinner.name, Spinner);
+
 Vue.config.productionTip = false
 
+import { log } from '@/components/common/utils'
+Vue.prototype.log = log
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    router,
+    store,
+    components: { App },
+    template: '<App/>'
 })
