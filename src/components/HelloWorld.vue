@@ -22,16 +22,13 @@
                 t: this.$store.state.test,
             }
         },
-        created() {
-            console.log('this.globalModalCount', this.$store.globalModalCount)
-        },
         methods: {
             test() {
-                console.log('1')
+                console.log('loading start')
                 this.$store.commit('globalModalCountAdd')
                 setTimeout(() => {
                     this.$store.commit('globalModalCountReduce')
-                    console.log('2')
+                    console.log('loading end')
                 }, 1000);
             }
         },
